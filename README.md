@@ -8,48 +8,52 @@ Get the application settings from a .NET application's web/app.config from your 
 
 ## Usage
 
-    webconfig
-    .compile({
-        // Specify all webconfigs that you want to compile
-        sources: [
-          __dirname + '/web.config',
-          __dirname + '/prod.web.config',
-        ],
-        // Configure your won overrides/extend for applicationSettings
-        applicationSettings: {
-          "MyApplicationSetting": "MyValue"
-        },
-        // Configure your won overrides/extend for appSettings
-        applicationSettings: {
-          "MyAppSetting": "MyValue"
-        }
-    })
-    .then(function(compiledWebConfig){
-      console.log(compiledWebConfig)
-    });
+```
+webconfig
+.compile({
+    // Specify all webconfigs that you want to compile
+    sources: [
+      __dirname + '/web.config',
+      __dirname + '/prod.web.config',
+    ],
+    // Configure your won overrides/extend for applicationSettings
+    applicationSettings: {
+      "MyApplicationSetting": "MyValue"
+    },
+    // Configure your won overrides/extend for appSettings
+    applicationSettings: {
+      "MyAppSetting": "MyValue"
+    }
+})
+.then(function(compiledWebConfig){
+  console.log(compiledWebConfig)
+});
+```
 
 #### The compiledWebConfig object looks like this:
 
-    {
-        // Array of xml2js translations of each web.config
-        sources: [{
-            configuration: [...]
-        }],
-        // App settings
-        appSettings: {
-            'webpages:Version': '3.0.0.0',
-            'webpages:Enabled': 'false',
-            ClientValidationEnabled: 'true',
-            UnobtrusiveJavaScriptEnabled: 'true',
-            MyAppSetting: "MyValue"
-        },
-        // Application settings
-        applicationSettings: {
-            Host: 'fake.company.com',
-            EmailSenderDisplayName: 'FakeName',
-            EmailTemplatesDirectory: 'C:\\fakepath',
-            BaseUrl: 'http://localhost:50640/fake/',
-            EmailSenderAddress: 'fake@fake.com',
-            MyApplicationSetting: "MyValue"
-        }
+```
+{
+    // Array of xml2js translations of each web.config
+    sources: [{
+        configuration: [...]
+    }],
+    // App settings
+    appSettings: {
+        'webpages:Version': '3.0.0.0',
+        'webpages:Enabled': 'false',
+        ClientValidationEnabled: 'true',
+        UnobtrusiveJavaScriptEnabled: 'true',
+        MyAppSetting: "MyValue"
+    },
+    // Application settings
+    applicationSettings: {
+        Host: 'fake.company.com',
+        EmailSenderDisplayName: 'FakeName',
+        EmailTemplatesDirectory: 'C:\\fakepath',
+        BaseUrl: 'http://localhost:50640/fake/',
+        EmailSenderAddress: 'fake@fake.com',
+        MyApplicationSetting: "MyValue"
     }
+}
+```
