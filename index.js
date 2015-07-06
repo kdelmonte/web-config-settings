@@ -32,7 +32,7 @@ module.exports = {
                 
             }
         };
-        console.log(options.sources.length)
+        
         // Read all the contents of the web.config
         async.each(options.sources, function(source, done){
             
