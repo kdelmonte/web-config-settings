@@ -9,6 +9,8 @@ Get the application settings from a .NET application's web/app.config from your 
 ## Usage
 
 ```
+var webconfig = require("webconfig");
+
 webconfig
 .compile({
     // Specify all webconfigs that you want to compile
