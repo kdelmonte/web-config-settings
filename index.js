@@ -67,7 +67,9 @@ module.exports = {
                     });   
                     
                     // Get the array of applicationSettings from the parsed web.config
-                    var applicationSettings = result.configuration["applicationSettings"][0]["ControlledActions.Properties.Settings"][0]['setting'];
+                    var applicationSettingsObject = result.configuration["applicationSettings"][0];
+                    var applicationSettingStore = _(applicationSettingsObject).keys().first();
+                    var applicationSettings = applicationSettingsObject[applicationSettingStore][0]['setting'];
         
                     // Loop through the translated 
                     _.each(applicationSettings, function (xmlSetting) {
