@@ -23,7 +23,7 @@ webconfig
       "MyApplicationSetting": "MyValue"
     },
     // Configure your won overrides/extend for appSettings
-    applicationSettings: {
+    appSettings: {
       "MyAppSetting": "MyValue"
     }
 })
