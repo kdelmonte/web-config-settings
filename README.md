@@ -18,11 +18,11 @@ webconfig
       __dirname + '/web.config',
       __dirname + '/prod.web.config',
     ],
-    // Configure your won overrides/extend for applicationSettings
+    // Configure your own overrides/extend for applicationSettings
     applicationSettings: {
       "MyApplicationSetting": "MyValue"
     },
-    // Configure your won overrides/extend for appSettings
+    // Configure your own overrides/extend for appSettings
     appSettings: {
       "MyAppSetting": "MyValue"
     }
