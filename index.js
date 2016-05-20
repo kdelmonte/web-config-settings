@@ -53,34 +53,38 @@ module.exports = {
                     // Let's look for what we want in it and put the setting in key-value pairs.
                     
                     // Get the array of appSettings from the parsed web.config
-                    var appSettings = result.configuration["appSettings"][0]['add'];
-                    
-                    // Loop through the translated appSettings
-                    _.each(appSettings, function (xmlSetting) {
-                        // Extract the names and values
-                        var appSetting = xmlSetting['$'];
-                        var settingName = appSetting.key;
-                        var settingValue = appSetting.value;
-        
-                        // Put the setting in our applicationSettings object
-                        compiledWebConfig.appSettings[settingName] = settingValue;
-                    });   
+                    if(result.configuration["appSettings"] && result.configuration["appSettings"][0]) {
+                        var appSettings = result.configuration["appSettings"][0]['add'];
+
+                        // Loop through the translated appSettings
+                        _.each(appSettings, function (xmlSetting) {
+                            // Extract the names and values
+                            var appSetting = xmlSetting['$'];
+                            var settingName = appSetting.key;
+                            var settingValue = appSetting.value;
+
+                            // Put the setting in our applicationSettings object
+                            compiledWebConfig.appSettings[settingName] = settingValue;
+                        });
+                    }
                     
                     // Get the array of applicationSettings from the parsed web.config
-                    var applicationSettingsObject = result.configuration["applicationSettings"][0];
-                    var applicationSettingStore = _(applicationSettingsObject).keys().first();
-                    var applicationSettings = applicationSettingsObject[applicationSettingStore][0]['setting'];
-        
-                    // Loop through the translated 
-                    _.each(applicationSettings, function (xmlSetting) {
-                        // Extract the names and values
-                        var applicationSetting = xmlSetting['$'];
-                        var settingName = applicationSetting.name;
-                        var settingValue = xmlSetting['value'][0];
-        
-                        // Put the setting in our applicationSettings object
-                        compiledWebConfig.applicationSettings[settingName] = settingValue;
-                    });   
+                    if(result.configuration["applicationSettings"] && result.configuration["applicationSettings"][0]) {
+                        var applicationSettingsObject = result.configuration["applicationSettings"][0];
+                        var applicationSettingStore = _(applicationSettingsObject).keys().first();
+                        var applicationSettings = applicationSettingsObject[applicationSettingStore][0]['setting'];
+
+                        // Loop through the translated
+                        _.each(applicationSettings, function (xmlSetting) {
+                            // Extract the names and values
+                            var applicationSetting = xmlSetting['$'];
+                            var settingName = applicationSetting.name;
+                            var settingValue = xmlSetting['value'][0];
+
+                            // Put the setting in our applicationSettings object
+                            compiledWebConfig.applicationSettings[settingName] = settingValue;
+                        });
+                    }
                     
                     // Move to next item in async queue
                     done();           
