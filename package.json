@@ -1,6 +1,6 @@
 {
   "name": "webconfig",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Gets the application settings from a .NET application's web/app.config",
   "main": "index.js",
   "scripts": {
